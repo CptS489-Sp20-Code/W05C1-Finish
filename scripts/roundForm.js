@@ -5,7 +5,8 @@ class RoundForm extends React.Component {
       let today = new Date(Date.now()-(new Date()).getTimezoneOffset()*60000);
       //store date as ISO string
       this.state = {date:  today.toISOString().substr(0,10), 
-                    course: ''}; 
+                    course: "",
+                    type: "practice"}; 
     }
   
     handleChange = (event) => {
@@ -34,6 +35,14 @@ class RoundForm extends React.Component {
                 value={this.state.course} onChange={this.handleChange}
                 placeholder="Course played" size="50" maxLength="50" />
             </label>
+          <p></p>
+          <label>Type:
+          <select name="type" value={this.state.type} 
+            className="form-control form-center" onChange={this.handleChange}>
+            <option value="practice">Practice</option>
+            <option value="tournament">Tournament</option>
+          </select> 
+          </label>
           <p></p>
           <input type="submit" className="btn btn-primary" value="Submit" />
           </center>
