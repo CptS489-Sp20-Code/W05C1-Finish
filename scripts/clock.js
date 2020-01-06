@@ -45,8 +45,16 @@ class Clock extends React.Component {
       this.state = {date: props.date};
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({date: nextProps.date});
+    // componentWillReceiveProps(nextProps) {
+    //     this.setState({date: nextProps.date});
+    // }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+      if (nextProps.date != prevState.date) {
+        return {date: nextProps.date};
+      }  else {
+        return null;
+      }
     }
 
     render() {
